@@ -1,4 +1,4 @@
-from fatapi import FastAPI
+from fastapi import FastAPI
 from app.database import Base, engine
 from app.controllers import aluno_controller
 
