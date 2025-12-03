@@ -6,4 +6,4 @@ class cursoModel(Base):
 
     id= Column(Integer, primary_key=True, index=True)
     nome_curso = Column(String, nullable=False)
-    duracao = Column(Integer, nullable=False)
+    carga_horaria = Column(Integer, nullable=False)
