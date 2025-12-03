@@ -1,19 +1,18 @@
 from sqlalchemy.orm import Session
-from app.models.aluno_model import ProfessorModel
-from fastapi import HTTPException, status
-from datetime import date
+from app.models.disciplina_model import Disciplina
 
-class disciplinaService:
+def criar_disciplina(db: Session, nome: str, carga_horaria: int, curso_id: int):
+    nova_disciplina = Disciplina(
+        nome=nome,
+        carga_horaria=carga_horaria,
+        curso_id=curso_id
+    )
 
-    @staticmethod
-    def criar_disciplina(db: Session, nome: str, carga_horaria: int, professor_id: int) -> ProfessorModel:
-        novo_disciplina = disciplinaModel(
-            nome=nome,
-            carga_horaria=carga_horaria,
-            professor_id=professor_id
-        )
-        db.add(novo_disciplina)
-        db.commit()
-        db.refresh(novo_disciplina)
-        return novo_disciplina
-from app.models.disciplina_model import disciplinaModel
+    db.add(nova_disciplina)
+    db.commit()
+    db.refresh(nova_disciplina)
+    return nova_disciplina
+
+
+def listar_disciplinas(db: Session):
+    return db.query(Disciplina).all()
