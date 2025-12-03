@@ -1,18 +1,17 @@
 from sqlalchemy.orm import Session
-from app.models.aluno_model import MatriculaModel
-from fastapi import HTTPException, status
-from datetime import date
+from app.models.matricula_model import Matricula
 
-class MatriculaService:
-    @staticmethod
-    def criar_matricula(db: Session, nome_estudante: str, curso: str, enrollment_date: str) -> MatriculaModel:
-        novo_matricula = MatriculaModel(
-            student_name=nome_estudante,
-            course=curso,
-            enrollment_date=enrollment_date
-        )
-        db.add(novo_matricula)
-        db.commit()
-        db.refresh(novo_matricula)
-        return novo_matricula
-from app.models.matricula_model import MatriculaModel
+def criar_matricula(db: Session, aluno_id: int, curso_id: int):
+    nova_matricula = Matricula(
+        aluno_id=aluno_id,
+        curso_id=curso_id
+    )
+
+    db.add(nova_matricula)
+    db.commit()
+    db.refresh(nova_matricula)
+    return nova_matricula
+
+
+def listar_matriculas(db: Session):
+    return db.query(Matricula).all()
