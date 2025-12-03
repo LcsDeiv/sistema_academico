@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import Column, Integer, String
 from app.database import Base
 
 class MatriculaModel(Base):
@@ -7,4 +7,4 @@ class MatriculaModel(Base):
     id = Column(Integer, primary_key=True, index=True)
     nome_estudante = Column(String, nullable=False)
     curso = Column(String, nullable=False)
-    data_inscricao = Column(Date, nullable=False)
+    data_inscricao = Column(String, nullable=False)

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import Column, Integer, String
 from app.database import Base 
 
 class Aluno (Base):
@@ -7,4 +7,4 @@ class Aluno (Base):
     id= Column(Integer, primary_key=True, index=True)
     nome_aluno = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False)
-    data_nascimento = Column(Date, nullable=False)
+    data_nascimento = Column(String, nullable=False)
